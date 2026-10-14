@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IT Assist — Hello from AWS</title>
+  <meta name="description" content="A static website stored in a private Amazon S3 bucket and served over HTTPS by CloudFront.">
+  <link rel="icon" href="assets/favicon.ico" sizes="any">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <header class="site-header" data-header>
+    <a class="brand" href="#top">
+      <img src="assets/logo.svg" width="32" height="32" alt="">
+      <span>IT Assist</span>
+    </a>
+    <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="site-nav" data-nav-toggle>
+      <span class="sr-only">Menu</span>
+      <span></span>
+      <span></span>
+    </button>
+    <nav id="site-nav" class="site-nav" data-nav>
+      <a href="#how">How it works</a>
+      <a href="#stack">The stack</a>
+      <a href="#visit">Visit</a>
+    </nav>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Project 1 · Live on AWS</p>
+        <h1>Hello from AWS S3 + CloudFront.</h1>
+        <p class="lede">Served over HTTPS from a private bucket. The files stay locked in S3. CloudFront is the only door in.</p>
+        <div class="hero-actions">
+          <a class="button" href="#how">See how it’s built</a>
+          <p class="hero-note">No public bucket. Redirected to HTTPS.</p>
+        </div>
+      </div>
+      <figure class="hero-frame">
+        <img src="assets/hero-image.webp" width="1280" height="720" alt="A sunlit desk with a closed laptop, a cup of coffee, and a small plant.">
+      </figure>
+    </section>
+
+    <section class="proof" aria-label="What this site proves">
+      <article>
+        <h2>Private origin</h2>
+        <p>Block all public access stays on. A direct S3 link returns Access Denied.</p>
+      </article>
+      <article>
+        <h2>Edge delivery</h2>
+        <p>CloudFront fetches the files and serves them from locations close to the visitor.</p>
+      </article>
+      <article>
+        <h2>Free HTTPS</h2>
+        <p>A certificate in us-east-1 puts the padlock on your own domain.</p>
+      </article>
+    </section>
+
+    <section id="how" class="how">
+      <div class="section-heading">
+        <p class="eyebrow">The path of a request</p>
+        <h2>Three stops, then the page.</h2>
+      </div>
+      <ol class="steps">
+        <li>
+          <span>01</span>
+          <h3>You open the domain</h3>
+          <p>DNS points the name at the CloudFront distribution, and HTTP is redirected to HTTPS.</p>
+        </li>
+        <li>
+          <span>02</span>
+          <h3>CloudFront asks S3</h3>
+          <p>Origin Access Control signs the request. S3 accepts it only from this distribution.</p>
+        </li>
+        <li>
+          <span>03</span>
+          <h3>index.html loads</h3>
+          <p>The default root object is this page, plus the stylesheet, script, and images beside it.</p>
+        </li>
+      </ol>
+    </section>
+
+    <section id="stack" class="stack">
+      <div class="section-heading">
+        <p class="eyebrow">What you created</p>
+        <h2>A small stack, kept private.</h2>
+      </div>
+      <ul class="stack-list">
+        <li>
+          <strong>Amazon S3</strong>
+          <span>Stores the site. Static website hosting stays off.</span>
+        </li>
+        <li>
+          <strong>Origin Access Control</strong>
+          <span>Lets this CloudFront distribution read the bucket.</span>
+        </li>
+        <li>
+          <strong>Amazon CloudFront</strong>
+          <span>Serves the site worldwide and redirects to HTTPS.</span>
+        </li>
+        <li>
+          <strong>AWS Certificate Manager</strong>
+          <span>Issues the certificate in N. Virginia for your domain.</span>
+        </li>
+      </ul>
+    </section>
+
+    <section id="visit" class="visit">
+      <div>
+        <p class="eyebrow">You’re looking at it</p>
+        <h2>This page is the upload.</h2>
+        <p>If the padlock is in the address bar, CloudFront and the certificate are doing their job. If a refresh of a deep link fails later, that is a separate app setting — this site is one file, so the root object is enough.</p>
+      </div>
+      <a class="button button-light" href="#top">Back to the top</a>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>IT Assist · Project 1 of 10</p>
+    <p>© <span data-year>2026</span> Hosted on Amazon S3, delivered by CloudFront.</p>
+  </footer>
+</body>
+</html>
