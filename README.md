@@ -1,5 +1,7 @@
 # Static website on S3 and CloudFront
 
+**Full YouTube tutorial:** https://youtu.be/mIiGXZNuuPc?si=0zx5H6sEBqWLaZRh
+
 A one-page static site stored in a private Amazon S3 bucket and served over HTTPS by Amazon CloudFront. The bucket stays private. Visitors reach the site only through CloudFront.
 
 ## Files
